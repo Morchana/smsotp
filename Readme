@@ -1,0 +1,2 @@
+docker build --network=host -t otpservice .
+docker run -p 9000:9000 -a stdin -a stdout otpservice

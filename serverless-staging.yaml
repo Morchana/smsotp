@@ -1,0 +1,22 @@
+service: sandbox-api-staging
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ap-southeast-1
+  environment: ${file(configs.js)}
+plugins:
+  - serverless-webpack
+custom:
+  webpack:
+    includeModules: true # enable auto-packing of external modules
+    packagerOptions:
+      scripts:
+        - prisma generate
+functions:
+  http:
+    handler: dist/lambda.default
+    timeout: 30
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}

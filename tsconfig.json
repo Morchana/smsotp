@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": ["ES2020", "esnext", "es6"],    
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
+}
